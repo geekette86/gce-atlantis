@@ -1,0 +1,14 @@
+repos:
+- id: /.*/
+  apply_requirements: [mergeable,approved]
+  delete_source_branch_on_merge: true
+  parallel_plan: true
+  allowed_overrides: [apply_requirements, workflow,custom_policy_check]
+  allow_custom_workflows: true
+  workflow: default
+workflows:
+  default:
+    plan:
+      steps: [init, plan] #to add fmt [see the bug #244]
+    apply:
+      steps: [apply]
